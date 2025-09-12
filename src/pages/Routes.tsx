@@ -6,7 +6,7 @@ import ProductDetail from "./ProductDetail";
 import Login from "../pages/LogIN";
 import Register from "./Register";
 import ForgotPassword from "./ForgotPass";
-import AllPage from "./AllPage";
+
 
 interface AppRoutesProps {
   searchQuery: string; // এখন আর optional নয়
@@ -17,7 +17,7 @@ const AppRoutes: React.FC<AppRoutesProps> = ({ searchQuery }) => {
     <Routes>
       {/* Home page */}
       <Route path="/" element={<Home searchQuery={searchQuery} />} />
-      <Route path="/all" element={<AllPage />} />
+    
 
       {/* Product Detail page */}
       <Route path="/product/:id" element={<ProductDetail />} />
