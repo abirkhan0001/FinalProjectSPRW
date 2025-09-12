@@ -16,8 +16,7 @@ const Home: React.FC<HomeProps> = ({ searchQuery = "" }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Products, categories, filtered products
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [products, setProducts] = useState<Product[]>([]);
+  const [, setProducts] = useState<Product[]>([]);
   const [filtered, setFiltered] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
 
