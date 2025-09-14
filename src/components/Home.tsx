@@ -239,8 +239,3 @@ const Home: React.FC<HomeProps> = ({ searchQuery = "" }) => {
 };
 
 export default Home;
-
-
-
-
-
