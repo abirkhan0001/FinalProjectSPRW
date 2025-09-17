@@ -1,4 +1,5 @@
 
+
 // import { useState, useRef, useEffect, useCallback } from "react";
 // import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 // import Sidebar from "../components/Sidebar";
@@ -11,16 +12,13 @@
 // }
 
 // const Home: React.FC<HomeProps> = ({ searchQuery = "" }) => {
-//   // Dropdown state
 //   const [isOpen, setIsOpen] = useState(false);
 //   const dropdownRef = useRef<HTMLDivElement>(null);
 
-//   // Products, categories, filtered products
 //   const [, setProducts] = useState<Product[]>([]);
 //   const [filtered, setFiltered] = useState<Product[]>([]);
 //   const [categories, setCategories] = useState<Category[]>([]);
 
-//   // Pagination & loading
 //   const [loading, setLoading] = useState(true);
 //   const [page, setPage] = useState(() => {
 //     const savedPage = localStorage.getItem("currentPage");
@@ -29,21 +27,17 @@
 //   const [totalPages, setTotalPages] = useState(1);
 //   const itemsPerPage = 30;
 
-//   // Sorting state
 //   const [sortOption, setSortOption] = useState("featured");
 
-//   // Price filter state
 //   const [minPrice, setMinPrice] = useState<string>("");
 //   const [maxPrice, setMaxPrice] = useState<string>("");
 
 //   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
-//   // Save page whenever it changes
 //   useEffect(() => {
 //     localStorage.setItem("currentPage", page.toString());
 //   }, [page]);
 
-//   // Click outside dropdown
 //   useEffect(() => {
 //     function handleClickOutside(event: MouseEvent) {
 //       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -54,7 +48,6 @@
 //     return () => document.removeEventListener("mousedown", handleClickOutside);
 //   }, []);
 
-//   // 🔹 Build URL (with sort + filters)
 //   const buildUrl = useCallback((
 //     page: number,
 //     sortOption: string,
@@ -65,6 +58,8 @@
 //     let url = `https://shop.sprwforge.com/api/v1/products?`;
 
 //     if (sortOption === "lowToHigh") url += `sortby=price_low_to_high&`;
+    
+    
 //     else if (sortOption === "highToLow") url += `sortby=price_high_to_low&`;
 
 //     url += `page=${page}`;
@@ -79,7 +74,6 @@
 //     return url;
 //   }, [searchQuery]);
 
-//   // 🔹 Category + Price filter function
 //   const handleCategorySelect = (id: number | null, min?: string, max?: string) => {
 //     setLoading(true);
 
@@ -107,7 +101,6 @@
 //       });
 //   };
 
-//   // 🔹 Products & categories fetch (default load)
 //   useEffect(() => {
 //     setLoading(true);
 
@@ -143,7 +136,6 @@
 //       .catch(err => console.error("Categories fetch failed:", err));
 //   }, [buildUrl, page, searchQuery, sortOption]);
 
-//   // 🔹 Price filter button function
 //   const handlePriceFilter = () => {
 //     handleCategorySelect(null, minPrice, maxPrice);
 //   };
@@ -154,19 +146,29 @@
 //     <div className="min-h-screen bg-[#F2F5F3]">
 //       <div className="border-b">
 //         {/* Sorting */}
-//         <div className="flex flex-col md:flex-col items-start mx-auto max-w-[1470px] px-4 py-2 gap-2 pt-11">
-//           <p className="text-[15px] mb-2">
+//         <div className="flex flex-col gap-2 pt-11 px-4 mx-auto max-w-[1470px] lg:flex-row lg:justify-between lg:items-center">
+
+//           {/* Showing results */}
+//           <p className="text-[15px] lg:order-1">
 //             Showing {(page - 1) * itemsPerPage + 1} to {Math.min(page * itemsPerPage, 406)} of 406 results
 //           </p>
-//           <div>
-//             <span className="pr-3 text-[13.5px] hidden md:block">Sort by</span>
-//             <div ref={dropdownRef} className="relative inline-block">
+
+//           {/* Featured dropdown */}
+//           <div className="w-full lg:w-auto lg:order-2">
+//             <span className="pr-3 text-[13.5px] hidden md:inline">Sort by</span>
+//             <div ref={dropdownRef} className="relative inline-block lg:w-auto">
 //               <div
 //                 onClick={toggleDropdown}
 //                 className={`flex items-center gap-2 bg-[#e9e9e8] hover:bg-[#F6F4F4] cursor-pointer px-4 py-[9px] rounded-xl transition border ${isOpen ? "border-[#470096]" : "border-gray-300"}`}
 //               >
 //                 <span>
-//                   {sortOption === "lowToHigh" ? "Price low to high" : sortOption === "highToLow" ? "Price high to low" : "Featured"}
+//                   {sortOption === "lowToHigh"
+//                     ? "Price low to high"
+//                     : sortOption === "highToLow"
+//                     ? "Price high to low"
+//                     : sortOption === "Avg. customar review"
+//                     ? "Avg. customar review"
+//                     : "Featured"}
 //                 </span>
 //                 {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
 //               </div>
@@ -179,10 +181,13 @@
 //                       onClick={() => { setSortOption("lowToHigh"); setIsOpen(false); }}>Price low to high</li>
 //                   <li className="p-2 hover:bg-gray-200 cursor-pointer"
 //                       onClick={() => { setSortOption("highToLow"); setIsOpen(false); }}>Price high to low</li>
+//                   <li className="p-2 hover:bg-gray-200 cursor-pointer"
+//                       onClick={() => { setSortOption("Avg. customer review"); setIsOpen(false); }}>Avg. customer review</li>
 //                 </ul>
 //               )}
 //             </div>
 //           </div>
+
 //         </div>
 //       </div>
 
@@ -209,7 +214,6 @@
 //         </main>
 //       </div>
 
-//       {/* Pagination */}
 //       <div className="flex justify-end mx-auto max-w-[1470px] p-6 mt-4">
 //         <div className="flex items-center border rounded-xl overflow-hidden">
 //           <button disabled={page === 1} onClick={() => setPage(prev => prev - 1)}
@@ -239,6 +243,7 @@
 // };
 
 // export default Home;
+
 
 
 
@@ -330,6 +335,11 @@ const Home: React.FC<HomeProps> = ({ searchQuery = "" }) => {
           );
         }
 
+        // ✅ Avg. customer review sort
+        if (sortOption === "Avg. customer review") {
+          productsData.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+        }
+
         setProducts(productsData);
         setFiltered(productsData);
         setTotalPages(data.data.result.last_page);
@@ -355,6 +365,11 @@ const Home: React.FC<HomeProps> = ({ searchQuery = "" }) => {
           productsData = productsData.filter((p) =>
             p.title.toLowerCase().includes(searchQuery.toLowerCase())
           );
+        }
+
+        // ✅ Avg. customer review sort
+        if (sortOption === "Avg. customer review") {
+          productsData.sort((a, b) => (b.rating || 0) - (a.rating || 0));
         }
 
         setProducts(productsData);
@@ -385,15 +400,11 @@ const Home: React.FC<HomeProps> = ({ searchQuery = "" }) => {
   return (
     <div className="min-h-screen bg-[#F2F5F3]">
       <div className="border-b">
-        {/* Sorting */}
         <div className="flex flex-col gap-2 pt-11 px-4 mx-auto max-w-[1470px] lg:flex-row lg:justify-between lg:items-center">
-
-          {/* Showing results */}
           <p className="text-[15px] lg:order-1">
             Showing {(page - 1) * itemsPerPage + 1} to {Math.min(page * itemsPerPage, 406)} of 406 results
           </p>
 
-          {/* Featured dropdown */}
           <div className="w-full lg:w-auto lg:order-2">
             <span className="pr-3 text-[13.5px] hidden md:inline">Sort by</span>
             <div ref={dropdownRef} className="relative inline-block lg:w-auto">
@@ -406,6 +417,8 @@ const Home: React.FC<HomeProps> = ({ searchQuery = "" }) => {
                     ? "Price low to high"
                     : sortOption === "highToLow"
                     ? "Price high to low"
+                    : sortOption === "Avg. customer review"
+                    ? "Avg. customer review"
                     : "Featured"}
                 </span>
                 {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
@@ -425,7 +438,6 @@ const Home: React.FC<HomeProps> = ({ searchQuery = "" }) => {
               )}
             </div>
           </div>
-
         </div>
       </div>
 
@@ -481,5 +493,3 @@ const Home: React.FC<HomeProps> = ({ searchQuery = "" }) => {
 };
 
 export default Home;
-
-
