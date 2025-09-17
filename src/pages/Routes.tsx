@@ -6,6 +6,7 @@ import ProductDetail from "./ProductDetail";
 import Login from "../pages/LogIN";
 import Register from "./Register";
 import ForgotPassword from "./ForgotPass";
+import ErrorPage from "./Error";
 
 
 interface AppRoutesProps {
@@ -17,6 +18,7 @@ const AppRoutes: React.FC<AppRoutesProps> = ({ searchQuery }) => {
     <Routes>
       {/* Home page */}
       <Route path="/" element={<Home searchQuery={searchQuery} />} />
+      <Route path="/error" element={<ErrorPage />} />
     
 
       {/* Product Detail page */}
