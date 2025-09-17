@@ -420,7 +420,7 @@ const Home: React.FC<HomeProps> = ({ searchQuery = "" }) => {
                   <li className="p-2 hover:bg-gray-200 cursor-pointer"
                       onClick={() => { setSortOption("highToLow"); setIsOpen(false); }}>Price high to low</li>
                   <li className="p-2 hover:bg-gray-200 cursor-pointer"
-                      onClick={() => { setSortOption("highToLow"); setIsOpen(false); }}>Avg. customer review</li>
+                      onClick={() => { setSortOption("Avg. customer review"); setIsOpen(false); }}>Avg. customer review</li>
                 </ul>
               )}
             </div>
