@@ -5,7 +5,7 @@ const ErrorPage = () => {
   return (
     <div className="min-h-[60vh] flex items-center justify-center p-4 bg-white">
       <div className="flex flex-col-reverse md:flex-row items-center gap-8 max-w-4xl w-full">
-        {/* Left Side (Texts + Buttons) */}
+    
         <div className="text-center md:text-left flex-1">
           <h1 className="text-[60px] md:text-[90px] text-[#333333] font-bold leading-tight">
             SORRY
@@ -34,7 +34,6 @@ const ErrorPage = () => {
           </h4>
         </div>
 
-        {/* Right Side (Image) */}
         <div className="flex-1 flex justify-center">
           <img
             src={eroor_image}

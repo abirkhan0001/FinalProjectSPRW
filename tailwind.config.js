@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       screens: {
-        xs: "430px",   // 2 cards from 430px
-        mdx: "990px",  // 3 cards from 990px
-        xxl: "1200px", // 5 cards at 1200px+//
+        xs: "430px",   
+        mdx: "990px",  
+        xxl: "1200px", 
        },
     },
   },

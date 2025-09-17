@@ -15,22 +15,19 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
   const [query, setQuery] = useState("");
-  const navigate = useNavigate(); // Login page navigation
-
+  const navigate = useNavigate();
   const handleSearch = () => {
     onSearch(query);
   };
 
   const handleLoginClick = () => {
-    navigate("/login"); // LOGIN button click => Login page
+    navigate("/login");
   };
 
   return (
     <div className="w-full bg-white">
-      {/* --- Top info bar --- */}
       <div className="w-full bg-white text-black text-sm border-b border-gray-200">
         <div className="max-w-[1470px] mx-auto px-4 py-2 flex justify-between items-center gap-6">
-          {/* Left: Language dropdown + Email & Helpline */}
           <div className="flex items-center gap-5">
             <select
               id="lang"
@@ -39,8 +36,6 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
               <option value="en">English</option>
               <option value="pt">Português</option>
             </select>
-
-            {/* Mail & Helpline - hide on mobile */}
             <div className="items-center gap-2 text-gray-700 hidden sm:flex">
               <TfiEmail />
               <a href="mailto:webzedcontact@gmail.com">Mail: webzedcontact@gmail.com</a>
@@ -48,11 +43,9 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
               <a href="tel:45343456565">Helpline: 45343456565</a>
             </div>
           </div>
-
-          {/* Right: Login button */}
           <div>
             <button
-              onClick={handleLoginClick} // Navigation on click
+              onClick={handleLoginClick}
               className="flex items-center gap-1 bg-white text-black px-3 py-1 rounded hover:bg-gray-100 transition"
             >
               <IoMdLogIn size={18} /> LOGIN
@@ -60,16 +53,12 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
           </div>
         </div>
       </div>
-
-      {/* --- Main navbar --- */}
       <div className="max-w-[1470px] mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-5">
-        {/* Logo */}
        <div className="flex justify-start items-center gap-3 w-full sm:w-auto">
-  <img src={logo} alt="Logo" className="h-[35px]" />
-</div>
+         <img src={logo} alt="Logo" className="h-[35px]" />
+      </div>
 
 
-        {/* Search bar */}
         <div className="flex-1 max-w-[1190px] relative w-full  sm:mt-0">
           <input
             type="text"

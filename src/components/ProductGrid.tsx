@@ -30,8 +30,7 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({ products }) => {
             <Link
               key={product.id}
               to={`/product/${product.id}`}
-              className="block"
-            >
+              className="block">
               <ProductCard product={product} />
             </Link>
           ))}

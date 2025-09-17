@@ -1,7 +1,7 @@
-// src/pages/Routes.tsx
+
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "../components/Home"; // নিশ্চিত হও Home আসলেই এখানে আছে
+import Home from "../components/Home";
 import ProductDetail from "./ProductDetail";
 import Login from "../pages/LogIN";
 import Register from "./Register";
@@ -10,28 +10,18 @@ import ErrorPage from "./Error";
 
 
 interface AppRoutesProps {
-  searchQuery: string; // এখন আর optional নয়
+  searchQuery: string;
 }
 
 const AppRoutes: React.FC<AppRoutesProps> = ({ searchQuery }) => {
   return (
     <Routes>
-      {/* Home page */}
       <Route path="/" element={<Home searchQuery={searchQuery} />} />
       <Route path="/error" element={<ErrorPage />} />
-    
-
-      {/* Product Detail page */}
       <Route path="/product/:id" element={<ProductDetail />} />
-
-      {/* Auth pages */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-
-      {/* Forgot Password page */}
       <Route path="/forgot-password" element={<ForgotPassword />} />
-
-      {/* Catch all - 404 page */}
       <Route
         path="*"
         element={

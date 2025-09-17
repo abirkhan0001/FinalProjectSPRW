@@ -1,4 +1,4 @@
-// src/components/Footer.tsx
+
 import React, { useEffect, useState } from "react";
 import Logo from "../assets/download.png"
 
